@@ -19,7 +19,7 @@ AudioSegment.converter = ffmpeg_path
 AudioSegment.ffplay = ffplay_path
 
 ###### Configuração da Azure
-speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('api_key'), region=os.environ.get('region'))
+speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('AZURE_SPEECH_KEY'), region=os.environ.get('AZURE_SPEECH_REGION'))
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
 #### Escolha da voz - para mais ler o README
