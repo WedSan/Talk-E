@@ -23,13 +23,13 @@ speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('AZURE_SPEECH
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
 #### Escolha da voz - para mais ler o README
-speech_config.speech_synthesis_voice_name='pt-BR-AntonioNeural'
+speech_config.speech_synthesis_voice_name='en-US-AvaMultilingualNeural'
 
 ### Criando o sintetizador de fala
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config,audio_config=audio_config)
 
 ## Texto a ser sintetizado
-text = """Seja bem vindo ao Talk-e, sua IA para prática de Inglês.""".strip()
+text = """Seja bem vindo ao Talk-e, sua IA para prática de Inglês. Welcome to talk-e""".strip()
 
 # Síntese de fala 
 speech_synthesis_result = speech_synthesizer.speak_text_async(text).get()
