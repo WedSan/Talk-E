@@ -2,7 +2,6 @@
 import os
 import io
 from pydub import AudioSegment
-from pydub.utils import which
 from pydub.playback import play
 import azure.cognitiveservices.speech as speechsdk
 
