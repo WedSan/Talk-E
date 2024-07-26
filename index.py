@@ -1,7 +1,7 @@
 import os
 import azure.cognitiveservices.speech as speechsdk
 
-def recognize_from_microphone():
+def recognize_from_microphone() -> str:
     speech_config = speechsdk.SpeechConfig(subscription=os.environ["AZURE_SPEECH_KEY"], region=os.environ['AZURE_SPEECH_REGION'])
     speech_config.speech_recognition_language="pt-br"
 
