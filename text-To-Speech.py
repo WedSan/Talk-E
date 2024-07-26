@@ -11,27 +11,31 @@ def play_audio_from_bytes(audio_data, format='wav'):
         audio_segment = AudioSegment.from_file(audio_data_io, format=format)
         play(audio_segment)
 
-###### Configuração da Azure
-speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('AZURE_SPEECH_KEY'), region=os.environ.get('AZURE_SPEECH_REGION'))
-audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
-#### Escolha da voz - para mais ler o README
-speech_config.speech_synthesis_voice_name='en-US-AvaMultilingualNeural'
+def azure_speak(message: str) -> None:
+    ###### Configuração da Azure
+    speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('AZURE_SPEECH_KEY'), region=os.environ.get('AZURE_SPEECH_REGION'))
+    audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
-### Criando o sintetizador de fala
-speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config,audio_config=audio_config)
+    #### Escolha da voz - para mais ler o README
+    speech_config.speech_synthesis_voice_name='en-US-AvaMultilingualNeural'
 
-## Texto a ser sintetizado
-text = """Seja bem vindo ao Talk-e, sua IA para prática de Inglês. Welcome to talk-e""".strip()
+    ### Criando o sintetizador de fala
+    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config,audio_config=audio_config)
 
-# Síntese de fala 
-speech_synthesis_result = speech_synthesizer.speak_text_async(text).get()
+    ## Texto a ser sintetizado
+    text = message.strip()
 
-# Verificar o resultado da síntese
-if speech_synthesis_result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
-    print("Síntese de fala concluída com sucesso.")
-elif speech_synthesis_result.reason == speechsdk.ResultReason.Canceled:
-    cancellation_details = speech_synthesis_result.cancellation_details
-    print(f"Síntese de fala cancelada: {cancellation_details.reason}")
-    if cancellation_details.reason == speechsdk.CancellationReason.Error:
-        print(f"Detalhes do erro: {cancellation_details.error_details}")
+    # Síntese de fala 
+    speech_synthesis_result = speech_synthesizer.speak_text_async(text).get()
+
+    # Verificar o resultado da síntese
+    if speech_synthesis_result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
+        print("Síntese de fala concluída com sucesso.")
+    elif speech_synthesis_result.reason == speechsdk.ResultReason.Canceled:
+        cancellation_details = speech_synthesis_result.cancellation_details
+        print(f"Síntese de fala cancelada: {cancellation_details.reason}")
+        if cancellation_details.reason == speechsdk.CancellationReason.Error:
+            print(f"Detalhes do erro: {cancellation_details.error_details}")
+
+azure_speak("Seja bem vindo ao Talk-e, sua IA para prática de Inglês. Welcome to talk-e")
