@@ -39,6 +39,6 @@ class GPT(GenerativeArtificialInteligence):
         message_response = response.json()['choices'][0]['message']['content']
         return message_response
 
-### Usage Example
-generative_ai = GPT(os.environ["GENERATIVE_AI_KEY"], os.environ["GENERATIVE_AI_ENDPOINT"])
-print(generative_ai.generate_response("Como posso dizer que gosto de comer bolo em inglês?"))
+# ### Usage Example
+# generative_ai = GPT(os.environ["GENERATIVE_AI_KEY"], os.environ["GENERATIVE_AI_ENDPOINT"])
+# print(generative_ai.generate_response("Como posso dizer que gosto de comer bolo em inglês?"))
