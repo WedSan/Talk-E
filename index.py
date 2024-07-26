@@ -1,7 +1,7 @@
 import os
 import azure.cognitiveservices.speech as speechsdk
 
-def recognize_from_microphone():
+def recognize_from_microphone() -> str:
     speech_config = speechsdk.SpeechConfig(subscription=os.environ["AZURE_SPEECH_KEY"], region=os.environ['AZURE_SPEECH_REGION'])
     speech_config.speech_recognition_language="pt-br"
 
@@ -13,6 +13,7 @@ def recognize_from_microphone():
 
     if speech_recognition_result.reason == speechsdk.ResultReason.RecognizedSpeech:
         print("Recognized: {}".format(speech_recognition_result.text))
+        return speech_recognition_result.text
     elif speech_recognition_result.reason == speechsdk.ResultReason.NoMatch:
         print("No speech could be recognized: {}".format(speech_recognition_result.no_match_details))
     elif speech_recognition_result.reason == speechsdk.ResultReason.Canceled:
