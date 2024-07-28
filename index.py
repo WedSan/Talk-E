@@ -23,4 +23,3 @@ def recognize_from_microphone() -> str:
             print("Error details: {}".format(cancellation_details.error_details))
             print("Did you set the speech resource key and region values?")
 
-recognize_from_microphone()
