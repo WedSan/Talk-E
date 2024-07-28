@@ -1,4 +1,4 @@
-from index import recognize_from_microphone
+from speech_to_text import recognize_from_microphone
 from gpt_ai import GPT
 from text_to_Speech import azure_speak
 from generative_ai import GenerativeArtificialInteligence
