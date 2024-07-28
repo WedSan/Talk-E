@@ -20,7 +20,7 @@ class GPT(GenerativeArtificialInteligence):
         "messages": [
             {
             "role": "user",
-            "content": message
+            "content": message + ". Toda vez que for escrever uma frase ou palavra em inglês coloque ela dentro dessa tag XML <lang xml:lang='en-US'>PALAVRA OU TEXTO INGLÊS AQUI DENTRO</lang> quando for português use <lang xml:lang='pt-BR'>PALAVRA OU TEXTO EM PORTUGUÊS AQUI DENTRO</lang> "
             }
         ],
         "temperature": 0.7,
